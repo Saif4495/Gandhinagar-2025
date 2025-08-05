@@ -1,75 +1,97 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Calendar,
-  MapPin,
-  Clock,
-  Play,
-  ChevronDown,
-  Trophy,
-  Users,
-  Route,
-  Award,
-} from "lucide-react";
+import { Calendar, MapPin, Clock, Users, ArrowRight } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
 const Hero = () => {
   const videoRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const [typewriterText, setTypewriterText] = useState("");
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [mapUrl, setMapUrl] = useState(
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117925.21689813308!2d72.4194074!3d23.2156354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b4f9!2sGandhinagar%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1623456789012!5m2!1sen!2sin"
+  );
+
+  // Distance typewriter effect state
+  const [distanceText, setDistanceText] = useState("");
+  const [currentDistanceIndex, setCurrentDistanceIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const words = [
-    "Run for Fitness",
-    "Run for Unity",
-    "Run for Gujarat",
-    "Run for Victory",
+  // Slogan typewriter effect state
+  const [sloganText, setSloganText] = useState("");
+  const [currentSloganIndex, setCurrentSloganIndex] = useState(0);
+  const [isSloganDeleting, setIsSloganDeleting] = useState(false);
+
+  const distances = ["3KM", "5KM", "10KM", "Half Marathon"];
+  const slogans = [
+    "Run Beyond Limits",
+    "Where Champions Rise",
+    "Every Step Counts",
+    "Unite Through Running",
+    "Chase Your Dreams",
   ];
 
   useEffect(() => {
-    setIsLoaded(true);
-    setIsInView(true);
+    // Auto-play video when component mounts
+    if (videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    }
   }, []);
 
-  // Typewriter effect
+  // Distance typewriter effect
   useEffect(() => {
-    const currentWord = words[currentWordIndex];
+    const currentDistance = distances[currentDistanceIndex];
     const timeout = setTimeout(
       () => {
         if (!isDeleting) {
-          setTypewriterText(
-            currentWord.substring(0, typewriterText.length + 1)
+          setDistanceText(
+            currentDistance.substring(0, distanceText.length + 1)
           );
-          if (typewriterText === currentWord) {
+          if (distanceText === currentDistance) {
             setTimeout(() => setIsDeleting(true), 2000);
           }
         } else {
-          setTypewriterText(
-            currentWord.substring(0, typewriterText.length - 1)
+          setDistanceText(
+            currentDistance.substring(0, distanceText.length - 1)
           );
-          if (typewriterText === "") {
+          if (distanceText === "") {
             setIsDeleting(false);
-            setCurrentWordIndex((prev) => (prev + 1) % words.length);
+            setCurrentDistanceIndex((prev) => (prev + 1) % distances.length);
           }
         }
       },
-      isDeleting ? 50 : 100
+      isDeleting ? 75 : 150
     );
 
     return () => clearTimeout(timeout);
-  }, [typewriterText, isDeleting, currentWordIndex, words]);
+  }, [distanceText, isDeleting, currentDistanceIndex, distances]);
 
-  const handleWatchHighlights = () => {
-    console.log("Watch highlights clicked");
-  };
+  // Slogan typewriter effect
+  useEffect(() => {
+    const currentSlogan = slogans[currentSloganIndex];
+    const timeout = setTimeout(
+      () => {
+        if (!isSloganDeleting) {
+          setSloganText(currentSlogan.substring(0, sloganText.length + 1));
+          if (sloganText === currentSlogan) {
+            setTimeout(() => setIsSloganDeleting(true), 3000);
+          }
+        } else {
+          setSloganText(currentSlogan.substring(0, sloganText.length - 1));
+          if (sloganText === "") {
+            setIsSloganDeleting(false);
+            setCurrentSloganIndex((prev) => (prev + 1) % slogans.length);
+          }
+        }
+      },
+      isSloganDeleting ? 50 : 100
+    );
+
+    return () => clearTimeout(timeout);
+  }, [sloganText, isSloganDeleting, currentSloganIndex, slogans]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black px-2 sm:px-4 lg:px-6 xl:px-8 py-4 sm:py-6 lg:py-8">
-      {/* Video Background Container with Responsive Rounded Edges */}
-      <div className="absolute inset-4 sm:inset-6 md:inset-8 lg:inset-12 xl:inset-16 z-0 rounded-xl sm:rounded-2xl md:rounded-3xl lg:rounded-4xl overflow-hidden shadow-2xl">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+      {/* Video Container with Increased Height */}
+      <div className="relative h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[85vh] overflow-hidden">
+        {/* Background Video */}
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
@@ -83,347 +105,227 @@ const Hero = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* Multi-layer overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50"></div>
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-black/5 to-black/30"></div>
-      </div>
+        {/* Semi-dark gradient overlay for readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
 
-      {/* Floating Marathon Location Button - Responsive positioning */}
-      <div
-        className="absolute top-6 sm:top-8 md:top-10 lg:top-12 right-6 sm:right-8 md:right-10 lg:right-12 xl:right-16 z-30 bg-gradient-to-r from-green-600 to-green-700 hover:from-yellow-500 hover:to-orange-500 border border-white/30 rounded-full px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-white font-semibold text-xs sm:text-sm transition-all duration-500 hover:scale-110 shadow-2xl cursor-pointer backdrop-blur-sm"
-        style={{
-          animation: "float 3s ease-in-out infinite",
-          animationDelay: "2s",
-        }}
-      >
-        <div className="flex items-center gap-1 sm:gap-1.5">
-          <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 transition-colors" />
-          <span className="drop-shadow-lg whitespace-nowrap">Gandhinagar</span>
+        {/* Registration Button - Floating at Top Center */}
+        <div className="absolute top-4 sm:top-6 md:top-8 left-1/2 transform -translate-x-1/2 z-20">
+          <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-110 flex items-center gap-2 sm:gap-3 border-2 border-red-400/50 text-sm sm:text-base">
+            REGISTRATION NOW
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
         </div>
-      </div>
 
-      {/* Main Content - Reduced top padding and responsive spacing */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 text-center flex flex-col justify-center min-h-[calc(100vh-2rem)]">
-        <div className="space-y-4 sm:space-y-6 md:space-y-8">
-          {/* Main Title with Responsive Font Sizes */}
-          <div className="space-y-1 sm:space-y-2">
-            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black leading-tight tracking-tight">
+        {/* Floating Cards Layout - Reduced Size */}
+        <div className="absolute inset-0 z-10 flex items-center justify-between px-3 sm:px-6 md:px-8 lg:px-12">
+          {/* Left Side Cards - Smaller Width */}
+          <div className="space-y-3 sm:space-y-4 md:space-y-5 w-[35%] sm:w-[30%] md:w-[28%] lg:w-[25%]">
+            {/* Save The Date Card - Transparent */}
+            <div className="bg-black/20 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 text-white shadow-2xl border border-white/20 hover:bg-black/30 transition-all duration-300">
+              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 md:mb-3 text-orange-300">
+                Save The Date!
+              </h3>
+              <div className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-red-400 mb-1 sm:mb-2">
+                10 JUNE 2025
+              </div>
+              <div className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-200 mb-2 sm:mb-3 md:mb-4">
+                AT 6 AM
+              </div>
+              <button className="bg-white/90 text-black px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full font-semibold flex items-center gap-1 sm:gap-2 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-xs sm:text-sm">
+                Add to Calendar
+                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+              </button>
+            </div>
+
+            {/* Distance Card with Typewriter Effect - Transparent */}
+            <div className="bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 text-white shadow-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 md:mb-3 text-orange-300">
+                Distance
+              </h3>
+              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-red-400 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] flex items-center">
+                {distanceText}
+                <span className="animate-pulse text-orange-400 ml-1">|</span>
+              </div>
+              <div className="text-xs sm:text-sm text-gray-300 mt-1 sm:mt-2">
+                Multiple race categories
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side Cards - Smaller Width */}
+          <div className="space-y-3 sm:space-y-4 md:space-y-5 w-[35%] sm:w-[30%] md:w-[28%] lg:w-[25%]">
+            {/* Attendant Card - Transparent */}
+            <div className="bg-black/25 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
+              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 text-orange-500">
+                Attendant
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-2 md:mb-3">
+                More Than
+              </p>
+              <div className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-red-400 flex flex-col sm:flex-row sm:items-baseline gap-1">
+                1000+
+                <span className="text-xs sm:text-sm font-normal text-gray-300">
+                  Participants
+                </span>
+              </div>
+            </div>
+
+            {/* Route Map Card - Transparent */}
+            <div className="bg-black/25 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
+              <div className="flex items-center justify-between mb-1 sm:mb-2 md:mb-3">
+                <h3 className="text-xs sm:text-sm md:text-base font-semibold text-orange-500">
+                  Route
+                </h3>
+                <button className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold hover:bg-red-600 transition-colors">
+                  Open
+                </button>
+              </div>
+
+              {/* Interactive Map - Smaller */}
+              <div className="relative">
+                <div className="aspect-square rounded-md sm:rounded-lg md:rounded-xl overflow-hidden shadow-lg border border-white/30">
+                  <iframe
+                    src={mapUrl}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-md sm:rounded-lg md:rounded-xl"
+                  ></iframe>
+                </div>
+
+                {/* Map Overlay Info - Compact */}
+                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2 bg-white/95 backdrop-blur-sm rounded-md p-1 sm:p-2 shadow-lg">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-xs font-semibold text-gray-700">
+                        Start
+                      </div>
+                      <div className="text-xs text-gray-600">Monas</div>
+                    </div>
+                    <div className="w-px h-3 sm:h-4 bg-gray-300"></div>
+                    <div className="text-right">
+                      <div className="text-xs font-semibold text-gray-700">
+                        Finish
+                      </div>
+                      <div className="text-xs text-gray-600">Ancol</div>
+                    </div>
+                  </div>
+
+                  {/* Route line visualization - Compact */}
+                  <div className="mt-1 flex items-center justify-center">
+                    <div className="flex-1 h-0.5 bg-gradient-to-r from-red-400 to-red-500 rounded-full relative">
+                      <div className="absolute left-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full -top-0.5 sm:-top-0.75 border border-white shadow-lg"></div>
+                      <div className="absolute right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full -top-0.5 sm:-top-0.75 border border-white shadow-lg"></div>
+                    </div>
+                  </div>
+
+                  <div className="text-center mt-1">
+                    <div className="text-xs text-gray-600">
+                      Multi-distance Marathon
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Center Title Text - Restructured Layout */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-15 text-center">
+          <div className="space-y-3 sm:space-y-4 md:space-y-6">
+            {/* Main Title - Three Lines Centered */}
+            <div className="space-y-1 sm:space-y-2">
+              {/* Marathon */}
               <div
-                className="block bg-gradient-to-r from-green-400 via-green-300 to-emerald-400 bg-clip-text text-transparent drop-shadow-2xl font-extrabold"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent font-extrabold"
                 style={{
-                  WebkitTextStroke: "1px rgba(255,255,255,0.3)",
+                  WebkitTextStroke: "1px rgba(255,255,255,0.4)",
                   filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
-                  animation: "fadeInUp 1s ease-out 0.3s both",
+                }}
+              >
+                {" "}
+                MARATHON
+              </div>
+
+              {/* 2025 */}
+              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white drop-shadow-2xl font-extrabold">
+                2025
+              </div>
+
+              {/* Gandhinagar with Gradient */}
+              <div
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent font-extrabold"
+                style={{
+                  WebkitTextStroke: "1px rgba(255,255,255,0.4)",
+                  filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
                 }}
               >
                 Gandhinagar
               </div>
-              <div
-                className="block bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent drop-shadow-2xl font-extrabold"
-                style={{
-                  WebkitTextStroke: "1px rgba(255,255,255,0.3)",
-                  filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
-                  animation: "fadeInUp 1s ease-out 0.5s both",
-                }}
-              >
-                Marathon
-              </div>
-              <div
-                className="block bg-gradient-to-r from-green-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent font-extrabold"
-                style={{
-                  WebkitTextStroke: "1.5px rgba(255,255,255,0.3)",
-                  filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
-                  animation: "fadeInUp 1s ease-out 0.7s both",
-                }}
-              >
-                2025
-              </div>
             </div>
 
-            {/* Typewriter Effect Subtitle - Responsive */}
-            <div
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white max-w-4xl mx-auto font-medium leading-relaxed px-2 sm:px-4 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] flex items-center justify-center"
-              style={{ animation: "fadeInUp 0.8s ease-out 0.8s both" }}
-            >
-              <span
-                className="inline-block"
-                style={{
-                  textShadow:
-                    "2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6)",
-                }}
-              >
-                {typewriterText}
-                <span className="animate-pulse text-green-400">|</span>
-              </span>
-            </div>
-
-            <p
-              className="text-sm sm:text-base md:text-lg text-white/90 max-w-3xl mx-auto font-medium leading-relaxed px-2 sm:px-4 mt-2 sm:mt-3"
-              style={{
-                textShadow: "1px 1px 2px rgba(0,0,0,0.8)",
-                animation: "fadeInUp 0.8s ease-out 1.2s both",
-              }}
-            >
-              Join thousands of runners in Gujarat's capital city for an
-              unforgettable marathon experience. Every step counts, every runner
-              matters.
-            </p>
-          </div>
-
-          {/* Event Details with Indian Flag Colors - Responsive */}
-          <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-white flex-wrap"
-            style={{
-              animation: "fadeInUp 0.8s ease-out 1.4s both",
-            }}
-          >
-            <div className="flex items-center space-x-1.5 backdrop-blur-md bg-gradient-to-r from-green-600/20 to-green-500/20 border border-white/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
-              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-green-300" />
-              <span
-                className="text-xs sm:text-sm font-semibold"
-                style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-              >
-                June 15, 2025
-              </span>
-            </div>
-            <div className="flex items-center space-x-1.5 backdrop-blur-md bg-gradient-to-r from-yellow-600/20 to-yellow-500/20 border border-white/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
-              <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-yellow-300" />
-              <span
-                className="text-xs sm:text-sm font-semibold"
-                style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-              >
-                6:00 AM
-              </span>
-            </div>
-            <div className="flex items-center space-x-1.5 backdrop-blur-md bg-gradient-to-r from-orange-600/20 to-orange-500/20 border border-white/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-lg">
-              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-300" />
-              <span
-                className="text-xs sm:text-sm font-semibold"
-                style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-              >
-                Gandhinagar, Gujarat
-              </span>
-            </div>
-          </div>
-
-          {/* CTA Buttons with Indian Theme - Responsive */}
-          <div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mt-4 sm:mt-6 px-2 sm:px-4"
-            style={{
-              animation: "fadeInUp 0.8s ease-out 1.6s both",
-            }}
-          >
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base transition-all duration-300 transform hover:scale-110 shadow-2xl border-2 border-green-400/30 hover:shadow-green-500/25"
-            >
-              Register Now
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleWatchHighlights}
-              className="w-full sm:w-auto border-2 border-white/80 text-white hover:bg-white hover:text-green-800 font-semibold px-5 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base transition-all duration-300 hover:scale-105 backdrop-blur-sm shadow-lg hover:shadow-white/25"
-            >
-              <Play className="mr-2 w-4 h-4" />
-              View Route Map
-            </Button>
-          </div>
-
-          {/* Floating Glass Cards with Entry Animations - Responsive Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mt-6 sm:mt-8 px-2 sm:px-4">
-            {[
-              {
-                icon: Users,
-                value: "1000+",
-                label: "Participants",
-                color: "green",
-                delay: 0,
-              },
-              {
-                icon: Route,
-                value: "4",
-                label: "Race Categories",
-                color: "yellow",
-                delay: 1,
-              },
-              {
-                icon: Trophy,
-                value: "21.1",
-                label: "Max Distance (KM)",
-                color: "orange",
-                delay: 2,
-              },
-              {
-                icon: Award,
-                value: "₹50L",
-                label: "Prize Pool",
-                color: "green",
-                delay: 3,
-              },
-            ].map((item, index) => {
-              const IconComponent = item.icon;
-              return (
+            {/* Typewriter Slogan - As Paragraph Below */}
+            <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12">
+              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white font-medium leading-relaxed">
                 <div
-                  key={index}
-                  className={`backdrop-blur-lg bg-white/10 rounded-lg sm:rounded-xl p-3 sm:p-4 md:p-5 border border-white/20 hover:border-${item.color}-400/50 transition-all duration-500 shadow-xl hover:shadow-${item.color}-500/20 transform hover:scale-105 hover:-translate-y-1 cursor-pointer group`}
+                  className="inline-block bg-black/30 backdrop-blur-md rounded-2xl px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 border border-white/20 shadow-2xl max-w-4xl"
                   style={{
-                    animation: `floatingCard 0.8s ease-out ${
-                      1.8 + index * 0.2
-                    }s both`,
-                    boxShadow:
-                      "0 6px 24px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+                    textShadow:
+                      "2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6)",
                   }}
                 >
-                  <div className="text-center">
-                    <IconComponent
-                      className={`w-5 h-5 sm:w-6 sm:h-6 mx-auto mb-2 text-${item.color}-400 group-hover:text-${item.color}-300 transition-colors duration-300`}
-                    />
-                    <div
-                      className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 group-hover:text-green-300 transition-colors duration-300"
-                      style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-                    >
-                      {item.value}
-                    </div>
-                    <div
-                      className="text-white/90 text-xs sm:text-sm font-medium group-hover:text-white transition-colors duration-300"
-                      style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.6)" }}
-                    >
-                      {item.label}
-                    </div>
-                  </div>
+                  <span className="text-orange-300 font-light tracking-wide">
+                    {sloganText}
+                  </span>
+                  <span className="animate-pulse text-orange-400 ml-1 font-thin">
+                    |
+                  </span>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Overlay Text in Video Center - Moved Lower */}
+        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 z-15">
+          <div className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-2xl drop-shadow-2xl text-center px-4 bg-black/30 backdrop-blur-sm rounded-full py-2 sm:py-3 border border-white/20">
+            BERJALAN DI ATAS KAKI SENDIRI
           </div>
         </div>
       </div>
 
-      {/* Tagline at Bottom of Video Card with Curved Edges */}
-      {/* <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 lg:bottom-12 xl:bottom-16 left-4 sm:left-6 md:left-8 lg:left-12 xl:left-16 right-4 sm:right-6 md:right-8 lg:right-12 xl:right-16 z-20">
-        <div className="bg-gradient-to-r from-green-600/90 via-yellow-500/90 to-orange-600/90 backdrop-blur-lg rounded-t-2xl sm:rounded-t-3xl border-t border-white/30 px-4 sm:px-6 md:px-8 py-3 sm:py-4 md:py-5 shadow-2xl">
-          <div className="text-center">
-            <h3
-              className="text-white font-bold text-sm sm:text-base md:text-lg lg:text-xl mb-1 sm:mb-2"
-              style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-            >
-              Where Every Step Tells a Story
-            </h3>
-            <p
-              className="text-white/90 text-xs sm:text-sm md:text-base font-medium leading-relaxed"
-              style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.6)" }}
-            >
-              Experience the spirit of Gujarat through running • Unite with
-              thousands • Create memories that last forever
-            </p>
-          </div>
+      {/* Red Banner at Bottom - SOEKARNO RUN SOLO 2025 */}
+      <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-center py-4 sm:py-6 md:py-8 shadow-2xl">
+        <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-wide drop-shadow-lg">
+          SOEKARNO RUN SOLO 2025
         </div>
-      </div> */}
+      </div>
 
-      {/* Scroll Indicator with Indian Colors - Hide on small screens */}
-      <div
-        className="hidden lg:block absolute bottom-8 xl:bottom-12 left-1/2 transform -translate-x-1/2 z-30"
-        style={{
-          animation: "fadeInUp 0.8s ease-out 2.2s both",
-        }}
-      >
-        {/* <div
-          className="flex flex-col items-center text-white cursor-pointer hover:text-green-400 transition-colors duration-300"
-          style={{
-            animation: "bounce 2s infinite",
-          }}
-        > */}
-        {/* <span
-            className="text-xs uppercase tracking-wider mb-1 font-medium"
-            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-          >
-            Scroll
-          </span>
-          <ChevronDown
-            className="w-5 h-5"
-            style={{ filter: "drop-shadow(1px 1px 2px rgba(0,0,0,0.8))" }}
+      {/* Bottom Section for Additional Content */}
+      <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black py-8 sm:py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Additional content can go here */}
+        </div>
+      </div>
+
+      {/* Custom Map URL Input (for development/admin) - Hidden on small screens */}
+      <div className="fixed bottom-4 right-4 z-50 opacity-10 hover:opacity-80 transition-opacity duration-300 hidden md:block">
+        <div className="bg-black/90 backdrop-blur-md rounded-lg p-3 text-white text-xs max-w-xs">
+          <label className="block mb-2 font-semibold">Map URL:</label>
+          <input
+            type="text"
+            value={mapUrl}
+            onChange={(e) => setMapUrl(e.target.value)}
+            className="w-full px-2 py-1 bg-white/20 rounded border border-white/30 text-xs"
+            placeholder="Google Maps embed URL"
           />
-        </div> */}
+        </div>
       </div>
-
-      {/* Custom CSS Animations with Responsive Improvements */}
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes floatingCard {
-          from {
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-
-        @keyframes bounce {
-          0%,
-          20%,
-          53%,
-          80%,
-          100% {
-            transform: translate(-50%, 0);
-          }
-          40%,
-          43% {
-            transform: translate(-50%, -10px);
-          }
-          70% {
-            transform: translate(-50%, -5px);
-          }
-          90% {
-            transform: translate(-50%, -2px);
-          }
-        }
-
-        /* Mobile-specific optimizations */
-        @media (max-width: 640px) {
-          .min-h-screen {
-            min-height: 100dvh; /* Dynamic viewport height for mobile */
-          }
-        }
-
-        /* Ensure proper spacing on all devices */
-        @media (min-width: 1280px) {
-          .max-w-6xl {
-            max-width: 80rem;
-          }
-        }
-
-        /* Tablet-specific adjustments */
-        @media (min-width: 768px) and (max-width: 1024px) {
-          .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-      `}</style>
-    </section>
+    </div>
   );
 };
 
