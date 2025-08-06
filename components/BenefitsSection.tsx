@@ -88,7 +88,7 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-indigo-50 via-white to-cyan-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-pink-200 via-red-200 to-yellow-300 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[url('/patterns/hexagons.svg')] opacity-5"></div>
       <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-blue-200/40 to-purple-200/40 rounded-full blur-3xl"></div>
@@ -195,7 +195,7 @@ const BenefitsSection = () => {
         </div>
 
         {/* Call to Action Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
+        <div className="backdrop-blur-2xl bg-gradient-to-r from-red-900/80 via-orange-900/80 to-pink-900/80 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
           {/* Background Pattern */}
           <div className="absolute inset-0 bg-[url('/patterns/wave.svg')] opacity-10"></div>
 
@@ -248,55 +248,6 @@ const BenefitsSection = () => {
                 <div className="text-sm">All skill levels</div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Success Stories Preview */}
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">
-            What Our Runners Say
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Priya Sharma",
-                quote:
-                  "This marathon changed my life. I've never felt stronger or more confident!",
-                category: "10KM Challenge",
-                image: "👩‍🦱",
-              },
-              {
-                name: "Rajesh Patel",
-                quote:
-                  "Amazing community, well-organized event. Can't wait for next year!",
-                category: "Half Marathon",
-                image: "👨‍🦲",
-              },
-              {
-                name: "Sneha Joshi",
-                quote:
-                  "Perfect for beginners. The support throughout the race was incredible.",
-                category: "5KM Race",
-                image: "👩‍🦰",
-              },
-            ].map((story, index) => (
-              <div
-                key={index}
-                className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-4xl mb-3">{story.image}</div>
-                <p className="text-gray-700 italic mb-4">"{story.quote}"</p>
-                <div className="text-sm">
-                  <div className="font-semibold text-gray-900">
-                    {story.name}
-                  </div>
-                  <div className="text-gray-600">
-                    {story.category} Participant
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

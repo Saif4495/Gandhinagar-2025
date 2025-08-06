@@ -185,7 +185,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-6 border-t border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl rounded-b-2xl shadow-2xl mt-2 border-x border-b border-white/10">
+          <div className="lg:hidden py-6 border-t  bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl rounded-b-2xl shadow-2xl mt-2 border-x border-b border-white/10">
             <nav className="space-y-3">
               {navigation.map((item) => (
                 <Link

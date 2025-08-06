@@ -33,7 +33,7 @@ export default function Footer() {
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <div className="relative flex-shrink-0">
                   <Image
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/World_Police_and_Fire_Games_logo.svg/250px-World_Police_and_Fire_Games_logo.svg.png"
+                    src="/logo/marathon.png"
                     alt="Rashtriya Raksha University"
                     width={60}
                     height={60}
@@ -42,53 +42,19 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-lg sm:text-xl font-black leading-tight text-white">
-                    World POLICE And Fire
+                    Gandhinagar Marathon 2025
                   </span>
-                  <span className="text-xs sm:text-sm text-blue-400 font-semibold leading-tight">
+                  <span className="text-xs sm:text-sm text-orange-400 font-semibold leading-tight">
                     GAMES 2029
                   </span>
                 </div>
               </div>
             </div>
             <p className="text-white/70 mb-6 max-w-md leading-relaxed text-sm sm:text-base">
-              Police Games 2029 - Where law enforcement heroes compete and
-              legends are born. Join the ultimate athletic competition for
-              police officers worldwide At Ahmedabad , Gujrat India.
+              Gandhinagar Marathon 2025 Where passion meets endurance and every
+              step echoes a cause. Join thousands in Gujarat capital city for
+              the ultimate celebration of fitness, unity, and purpose.
             </p>
-            {/* <div className="flex space-x-2 sm:space-x-4">
-              <motion.a
-                href="facebook.com/BHM2025"
-                className="text-white/60 hover:text-blue-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Facebook className="w-5 h-5 sm:w-6 sm:h-6" />
-              </motion.a>
-              <motion.a
-                href="https://x.com/WPFG_India"
-                className="text-white/60 hover:text-cyan-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Twitter className="w-5 h-5 sm:w-6 sm:h-6" />
-              </motion.a>
-              <motion.a
-                href="instagram.com/BHM2025"
-                className="text-white/60 hover:text-blue-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Instagram className="w-5 h-5 sm:w-6 sm:h-6" />
-              </motion.a>
-              <motion.a
-                href="https://www.youtube.com/@BHM2025WPFG"
-                className="text-white/60 hover:text-cyan-400 transition-colors duration-300 p-2 rounded-lg hover:bg-white/5"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Youtube className="w-5 h-5 sm:w-6 sm:h-6" />
-              </motion.a>
-            </div> */}
           </motion.div>
 
           {/* Quick Links */}

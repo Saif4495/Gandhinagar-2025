@@ -28,13 +28,6 @@ const Hero = () => {
     "Chase Your Dreams",
   ];
 
-  useEffect(() => {
-    // Auto-play video when component mounts
-    if (videoRef.current) {
-      videoRef.current.play().catch(console.error);
-    }
-  }, []);
-
   // Distance typewriter effect
   useEffect(() => {
     const currentDistance = distances[currentDistanceIndex];
@@ -190,7 +183,7 @@ const Hero = () => {
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    allowFullScreen=""
+                    // allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="rounded-md sm:rounded-lg md:rounded-xl"
@@ -241,7 +234,7 @@ const Hero = () => {
             <div className="space-y-1 sm:space-y-2">
               {/* Marathon */}
               <div
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent font-extrabold"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent "
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,0.4)",
                   filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
@@ -252,13 +245,13 @@ const Hero = () => {
               </div>
 
               {/* 2025 */}
-              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white drop-shadow-2xl font-extrabold">
+              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white drop-shadow-2xl ">
                 2025
               </div>
 
               {/* Gandhinagar with Gradient */}
               <div
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent font-extrabold"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent "
                 style={{
                   WebkitTextStroke: "1px rgba(255,255,255,0.4)",
                   filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
@@ -293,7 +286,7 @@ const Hero = () => {
         {/* Overlay Text in Video Center - Moved Lower */}
         <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 z-15">
           <div className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-2xl drop-shadow-2xl text-center px-4 bg-black/30 backdrop-blur-sm rounded-full py-2 sm:py-3 border border-white/20">
-            BERJALAN DI ATAS KAKI SENDIRI
+            Sabarmati River Front
           </div>
         </div>
       </div>
@@ -301,7 +294,7 @@ const Hero = () => {
       {/* Red Banner at Bottom - SOEKARNO RUN SOLO 2025 */}
       <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-center py-4 sm:py-6 md:py-8 shadow-2xl">
         <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-wide drop-shadow-lg">
-          SOEKARNO RUN SOLO 2025
+          Gandhinagar Marathon 2025
         </div>
       </div>
 
