@@ -39,10 +39,10 @@ export default function Navbar() {
 
   const navigation: NavigationItem[] = [
     { name: "Home", href: "/" },
-    { name: "Information", href: "/information" },
-    { name: "Route", href: "/route" },
-    { name: "Benefits", href: "/benefits" },
-    { name: "Contact", href: "/contact" },
+    { name: "Information", href: "#information" },
+    { name: "Route", href: "#route" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const isActive = (path: string): boolean => pathname === path;

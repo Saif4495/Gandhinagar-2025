@@ -18,7 +18,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-slate-900 to-slate-950 border-t border-white/10">
+    <footer className="relative bg-gradient-to-b from-red-900 to-yellow-950 border-t border-orange-400/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Logo and Description */}
@@ -45,7 +45,7 @@ export default function Footer() {
                     Gandhinagar Marathon 2025
                   </span>
                   <span className="text-xs sm:text-sm text-orange-400 font-semibold leading-tight">
-                    GAMES 2029
+                    Marathon 2025
                   </span>
                 </div>
               </div>
@@ -137,7 +137,7 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start space-x-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <div className="text-white/90 font-medium text-sm sm:text-base">
                     Event Location
@@ -162,7 +162,7 @@ export default function Footer() {
                 </div>
               </li> */}
               <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 flex-shrink-0" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0" />
                 <div>
                   <div className="text-white/90 font-medium text-sm sm:text-base">
                     rru.ac.in
@@ -188,8 +188,8 @@ export default function Footer() {
             {/* Copyright and Developer Credit */}
             <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:items-center sm:space-x-4 text-xs sm:text-sm">
               <div className="text-white/60">
-                © 2029 Police Games. All rights reserved. | Built with pride for
-                law enforcement heroes.
+                © 2025 Marathon. All rights reserved. | Built with pride for law
+                enforcement heroes.
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-white/50">Developed by</span>
@@ -197,7 +197,7 @@ export default function Footer() {
                   href="https://www.linkedin.com/in/dev-mohd-saif"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 font-medium"
+                  className="flex items-center space-x-2 text-orange-400 hover:text-orange-300 transition-colors duration-300 font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -234,7 +234,7 @@ export default function Footer() {
 
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute bottom-0 left-1/4 w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-blue-400/10"></div>
+        <div className="absolute bottom-0 left-1/4 w-24 h-24 sm:w-32 sm:h-32 rounded-full border border-orange-400/10"></div>
         <div className="absolute bottom-0 right-1/4 w-32 h-32 sm:w-48 sm:h-48 rounded-full border border-cyan-400/10"></div>
       </div>
     </footer>

@@ -12,9 +12,9 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "World Police And Fire Games 2029",
+  title: "Marathon 2025",
   description:
-    "Welcome to World Police And Police Games 2029 - Where Heroes Compete. Join the Ultimate Athletic Competition for Law Enforcement.",
+    "Marathon 2025 Gandhinagar is a premier marathon event that brings together runners from all over the world to celebrate fitness, community, and the spirit of competition. Join us for an unforgettable experience in the heart of Gujarat.",
 };
 
 export default function RootLayout({

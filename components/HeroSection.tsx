@@ -110,64 +110,60 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* Floating Cards Layout - Reduced Size */}
-        <div className="absolute inset-0 z-10 flex items-center justify-between px-3 sm:px-6 md:px-8 lg:px-12">
-          {/* Left Side Cards - Smaller Width */}
-          <div className="space-y-3 sm:space-y-4 md:space-y-5 w-[35%] sm:w-[30%] md:w-[28%] lg:w-[25%]">
+        {/* Floating Cards Layout - HIDDEN ON MOBILE (lg and above only) */}
+        <div className="absolute inset-0 z-10 lg:flex items-center justify-between px-12 hidden">
+          {/* Left Side Cards - Desktop Only */}
+          <div className="space-y-5 w-[25%]">
             {/* Save The Date Card - Transparent */}
-            <div className="bg-black/20 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 text-white shadow-2xl border border-white/20 hover:bg-black/30 transition-all duration-300">
-              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 md:mb-3 text-orange-300">
+            <div className="bg-black/20 backdrop-blur-lg rounded-2xl p-5 text-white shadow-2xl border border-white/20 hover:bg-black/30 transition-all duration-300">
+              <h3 className="text-base font-semibold mb-3 text-orange-300">
                 Save The Date!
               </h3>
-              <div className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-red-400 mb-1 sm:mb-2">
+              <div className="text-3xl font-bold text-red-400 mb-2">
                 10 JUNE 2025
               </div>
-              <div className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-200 mb-2 sm:mb-3 md:mb-4">
-                AT 6 AM
-              </div>
-              <button className="bg-white/90 text-black px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full font-semibold flex items-center gap-1 sm:gap-2 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-xs sm:text-sm">
+              <div className="text-lg text-gray-200 mb-4">AT 6 AM</div>
+              <button className="bg-white/90 text-black px-4 py-2 rounded-full font-semibold flex items-center gap-2 hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm">
                 Add to Calendar
-                <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
             {/* Distance Card with Typewriter Effect - Transparent */}
-            <div className="bg-white/10 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 text-white shadow-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
-              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 md:mb-3 text-orange-300">
+            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-5 text-white shadow-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
+              <h3 className="text-base font-semibold mb-3 text-orange-300">
                 Distance
               </h3>
-              <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-red-400 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] flex items-center">
+              <div className="text-5xl font-bold text-red-400 min-h-[3rem] flex items-center">
                 {distanceText}
                 <span className="animate-pulse text-orange-400 ml-1">|</span>
               </div>
-              <div className="text-xs sm:text-sm text-gray-300 mt-1 sm:mt-2">
+              <div className="text-sm text-gray-300 mt-2">
                 Multiple race categories
               </div>
             </div>
           </div>
 
-          {/* Right Side Cards - Smaller Width */}
-          <div className="space-y-3 sm:space-y-4 md:space-y-5 w-[35%] sm:w-[30%] md:w-[28%] lg:w-[25%]">
+          {/* Right Side Cards - Desktop Only */}
+          <div className="space-y-5 w-[25%]">
             {/* Attendant Card - Transparent */}
-            <div className="bg-black/25 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
-              <h3 className="text-xs sm:text-sm md:text-base font-semibold mb-1 sm:mb-2 text-orange-500">
+            <div className="bg-black/25 backdrop-blur-lg rounded-2xl p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
+              <h3 className="text-base font-semibold mb-2 text-orange-500">
                 Attendant
               </h3>
-              <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-2 md:mb-3">
-                More Than
-              </p>
-              <div className="text-sm sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-red-400 flex flex-col sm:flex-row sm:items-baseline gap-1">
+              <p className="text-sm text-gray-300 mb-3">More Than</p>
+              <div className="text-3xl font-bold text-red-400 flex items-baseline gap-2">
                 1000+
-                <span className="text-xs sm:text-sm font-normal text-gray-300">
+                <span className="text-sm font-normal text-gray-300">
                   Participants
                 </span>
               </div>
             </div>
 
             {/* Route Map Card - Transparent */}
-            <div className="bg-black/25 backdrop-blur-lg rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
-              <div className="flex items-center justify-between mb-1 sm:mb-2 md:mb-3">
-                <h3 className="text-xs sm:text-sm md:text-base font-semibold text-orange-500">
+            <div className="bg-black/25 backdrop-blur-lg rounded-2xl p-5 shadow-2xl border border-white/25 hover:bg-black/35 transition-all duration-300">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-base font-semibold text-orange-500">
                   Route
                 </h3>
                 <button className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold hover:bg-red-600 transition-colors">
@@ -175,23 +171,22 @@ const Hero = () => {
                 </button>
               </div>
 
-              {/* Interactive Map - Smaller */}
+              {/* Interactive Map */}
               <div className="relative">
-                <div className="aspect-square rounded-md sm:rounded-lg md:rounded-xl overflow-hidden shadow-lg border border-white/30">
+                <div className="aspect-square rounded-xl overflow-hidden shadow-lg border border-white/30">
                   <iframe
                     src={mapUrl}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    // allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-md sm:rounded-lg md:rounded-xl"
+                    className="rounded-xl"
                   ></iframe>
                 </div>
 
-                {/* Map Overlay Info - Compact */}
-                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2 bg-white/95 backdrop-blur-sm rounded-md p-1 sm:p-2 shadow-lg">
+                {/* Map Overlay Info */}
+                <div className="absolute bottom-2 left-2 right-2 bg-white/95 backdrop-blur-sm rounded-md p-2 shadow-lg">
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-xs font-semibold text-gray-700">
@@ -199,7 +194,7 @@ const Hero = () => {
                       </div>
                       <div className="text-xs text-gray-600">Monas</div>
                     </div>
-                    <div className="w-px h-3 sm:h-4 bg-gray-300"></div>
+                    <div className="w-px h-4 bg-gray-300"></div>
                     <div className="text-right">
                       <div className="text-xs font-semibold text-gray-700">
                         Finish
@@ -208,11 +203,11 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  {/* Route line visualization - Compact */}
+                  {/* Route line visualization */}
                   <div className="mt-1 flex items-center justify-center">
                     <div className="flex-1 h-0.5 bg-gradient-to-r from-red-400 to-red-500 rounded-full relative">
-                      <div className="absolute left-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full -top-0.5 sm:-top-0.75 border border-white shadow-lg"></div>
-                      <div className="absolute right-0 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-red-500 rounded-full -top-0.5 sm:-top-0.75 border border-white shadow-lg"></div>
+                      <div className="absolute left-0 w-2 h-2 bg-red-500 rounded-full -top-0.75 border border-white shadow-lg"></div>
+                      <div className="absolute right-0 w-2 h-2 bg-red-500 rounded-full -top-0.75 border border-white shadow-lg"></div>
                     </div>
                   </div>
 
@@ -227,54 +222,61 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Center Title Text - Restructured Layout */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-15 text-center">
+        {/* Center Title Text - UPDATED with larger mobile sizes */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-15 text-center px-4">
           <div className="space-y-3 sm:space-y-4 md:space-y-6">
-            {/* Main Title - Three Lines Centered */}
+            {/* Main Title - Three Lines Centered - INCREASED MOBILE SIZES */}
             <div className="space-y-1 sm:space-y-2">
-              {/* Marathon */}
+              {/* Marathon - Increased from text-3xl to text-5xl on mobile */}
               <div
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent "
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent leading-tight"
                 style={{
-                  WebkitTextStroke: "1px rgba(255,255,255,0.4)",
-                  filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
+                  WebkitTextStroke: "2px rgba(255,255,255,0.5)",
+                  filter: "drop-shadow(3px 3px 6px rgba(0,0,0,0.9))",
+                  fontWeight: "900",
                 }}
               >
-                {" "}
                 MARATHON
               </div>
 
-              {/* 2025 */}
-              <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white drop-shadow-2xl ">
+              {/* 2025 - Increased from text-4xl to text-6xl on mobile */}
+              <div
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black text-white drop-shadow-2xl leading-tight"
+                style={{
+                  fontWeight: "900",
+                  filter: "drop-shadow(3px 3px 6px rgba(0,0,0,0.9))",
+                }}
+              >
                 2025
               </div>
 
-              {/* Gandhinagar with Gradient */}
+              {/* Gandhinagar - Increased from text-3xl to text-5xl on mobile */}
               <div
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent "
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent leading-tight"
                 style={{
-                  WebkitTextStroke: "1px rgba(255,255,255,0.4)",
-                  filter: "drop-shadow(2px 2px 4px rgba(0,0,0,0.8))",
+                  WebkitTextStroke: "2px rgba(255,255,255,0.5)",
+                  filter: "drop-shadow(3px 3px 6px rgba(0,0,0,0.9))",
+                  fontWeight: "900",
                 }}
               >
                 Gandhinagar
               </div>
             </div>
 
-            {/* Typewriter Slogan - As Paragraph Below */}
+            {/* Typewriter Slogan - Also increased mobile size */}
             <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white font-medium leading-relaxed">
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white font-medium leading-relaxed">
                 <div
-                  className="inline-block bg-black/30 backdrop-blur-md rounded-2xl px-6 sm:px-8 md:px-10 lg:px-12 py-3 sm:py-4 md:py-5 border border-white/20 shadow-2xl max-w-4xl"
+                  className="inline-block bg-black/40 backdrop-blur-md rounded-2xl px-6 sm:px-8 md:px-10 lg:px-12 xl:px-14 py-4 sm:py-5 md:py-6 border border-white/30 shadow-2xl max-w-5xl"
                   style={{
                     textShadow:
-                      "2px 2px 4px rgba(0,0,0,0.8), 1px 1px 2px rgba(0,0,0,0.6)",
+                      "3px 3px 6px rgba(0,0,0,0.9), 2px 2px 4px rgba(0,0,0,0.7)",
                   }}
                 >
-                  <span className="text-orange-300 font-light tracking-wide">
+                  <span className="text-orange-300 font-semibold tracking-wide">
                     {sloganText}
                   </span>
-                  <span className="animate-pulse text-orange-400 ml-1 font-thin">
+                  <span className="animate-pulse text-orange-400 ml-2 font-thin">
                     |
                   </span>
                 </div>
@@ -282,16 +284,65 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Overlay Text in Video Center - Moved Lower */}
-        <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 transform -translate-x-1/2 z-15">
-          <div className="text-white font-bold text-base sm:text-lg md:text-xl lg:text-2xl drop-shadow-2xl text-center px-4 bg-black/30 backdrop-blur-sm rounded-full py-2 sm:py-3 border border-white/20">
-            Sabarmati River Front
+      {/* Mobile Info Cards - Only visible on mobile/tablet */}
+      <div className="lg:hidden bg-gradient-to-br from-slate-800 to-slate-900 py-8 px-4">
+        <div className="max-w-md mx-auto space-y-4">
+          {/* Date & Time Card - Mobile */}
+          <div className="bg-black/40 backdrop-blur-lg rounded-xl p-4 text-white shadow-xl border border-white/20">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-semibold mb-1 text-orange-300">
+                  Event Date
+                </h3>
+                <div className="text-xl font-bold text-red-400">
+                  10 JUNE 2025
+                </div>
+                <div className="text-sm text-gray-300">6:00 AM</div>
+              </div>
+              <Calendar className="w-8 h-8 text-orange-400" />
+            </div>
+          </div>
+
+          {/* Distance & Participants - Mobile */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 text-white shadow-xl border border-white/20">
+              <h3 className="text-sm font-semibold mb-2 text-orange-300">
+                Distances
+              </h3>
+              <div className="text-lg font-bold text-red-400">3KM - Half</div>
+              <div className="text-xs text-gray-300">Multiple categories</div>
+            </div>
+
+            <div className="bg-black/25 backdrop-blur-lg rounded-xl p-4 text-white shadow-xl border border-white/25">
+              <h3 className="text-sm font-semibold mb-2 text-orange-300">
+                Expected
+              </h3>
+              <div className="text-lg font-bold text-red-400">1000+</div>
+              <div className="text-xs text-gray-300">Participants</div>
+            </div>
+          </div>
+
+          {/* Location Card - Mobile */}
+          <div className="bg-black/25 backdrop-blur-lg rounded-xl p-4 text-white shadow-xl border border-white/25">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-sm font-semibold text-orange-300">
+                Route Location
+              </h3>
+              <MapPin className="w-5 h-5 text-orange-400" />
+            </div>
+            <div className="text-base font-semibold text-white">
+              Sabarmati River Front, Gandhinagar
+            </div>
+            <div className="text-xs text-gray-300 mt-1">
+              Multi-distance Marathon Route
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Red Banner at Bottom - SOEKARNO RUN SOLO 2025 */}
+      {/* Red Banner at Bottom */}
       <div className="bg-gradient-to-r from-red-500 to-red-600 text-white text-center py-4 sm:py-6 md:py-8 shadow-2xl">
         <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-wide drop-shadow-lg">
           Gandhinagar Marathon 2025

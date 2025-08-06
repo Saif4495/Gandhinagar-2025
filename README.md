@@ -134,4 +134,3 @@ If you have any questions or need help, please open an issue on GitHub.
 
 ---
 
-Built with ❤️ for the World Police Fire Games 2029# Gandhinagar-2025
